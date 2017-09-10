@@ -7,6 +7,7 @@ const BlockSection = (function () {
     /**
      * Handles entire section of text blocks, one per selected layer
      * @exports BlockSection
+     * @todo Use simpler algorithm if shape is a rectangle
      * @param {Application}  Sketch    - Current contextual instance
      * @param {Group}        container - Group of current layer
      * @param {NSBezierPath} bezierPath
