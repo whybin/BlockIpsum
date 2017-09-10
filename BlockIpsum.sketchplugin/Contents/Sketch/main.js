@@ -49,6 +49,8 @@ var onGenerate = function (context) {    // eslint-disable-line no-unused-vars
             layer.sketchObject.bezierPathWithTransforms(),
             options
         );
+
+        layer.remove();
     });
 
     if (!numCorrectLayers) {
