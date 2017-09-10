@@ -4,6 +4,13 @@
         "es6": true,
         "node": true
     },
+    "globals": {
+        "COSAlertWindow": true,
+        "BlockLine": true,
+        "BlockSection": true,
+        "Form": true,
+        "Messenger": true
+    },
     "extends": "eslint:recommended",
     "parserOptions": {
         "sourceType": "module"

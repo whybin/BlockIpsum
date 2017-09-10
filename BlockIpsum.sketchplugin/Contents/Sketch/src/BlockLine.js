@@ -10,6 +10,7 @@
  * @param {object}       [options]
  * @param {number}       [options.blockHeight=16]
  */
+// eslint-disable-next-line no-unused-vars
 const BlockLine = function (Sketch, container, endpoints, y, options) {
     if (!options.blockHeight || options.blockHeight < 0) {
         Messenger.alert('Invalid block height');
@@ -17,9 +18,9 @@ const BlockLine = function (Sketch, container, endpoints, y, options) {
     }
 
     while (endpoints.length) {
-        let x = endpoints.shift();
-        let w = endpoints.shift() - x;
-        let r = new Sketch.Rectangle(
+        const x = endpoints.shift();
+        const w = endpoints.shift() - x;
+        const r = new Sketch.Rectangle(
             x, y, w || options.blockHeight, options.blockHeight
         );
 

@@ -6,7 +6,7 @@
  * Handler for generating random-length text blocks
  * @param context
  */
-var onGenerate = function (context) {
+var onGenerate = function (context) {    // eslint-disable-line no-unused-vars
     const Sketch          = context.api();
     Messenger.Sketch      = Sketch;
 
@@ -15,33 +15,35 @@ var onGenerate = function (context) {
         'No shape layers were selected',
         'Please select at least one shape layer before proceeding'
     ];
-    
+
     if (!selectedLayers.length) {
         Messenger.alert(...SELECTION_ERROR);
         return;
     }
 
-    let form = new Form({
-            blockHeight: 'Text block height',
-            lineSpacing: 'Line spacing',
-            accuracy:    'Horizontal margin of error'
-        },
+    /* eslint-disable indent */
+    const form = new Form({
+        blockHeight: 'Text block height',
+        lineSpacing: 'Line spacing',
+        accuracy:    'Horizontal margin of error'
+    },
         'Generate Text Blocks',
         'Please enter numerical values. Blanks will be replaced with default values.'
     );
+    /* eslint-enable indent */
 
-    let options = form.display();
+    const options = form.display();
     for (const key in options) {
         options[key] = parseInt(options[key]);
     }
 
     let numCorrectLayers = 0;
-    let filterLayers     = layer => layer.isShape;
+    const filterLayers   = layer => layer.isShape;
 
     // Only accept Shape layers
     selectedLayers.iterateWithFilter(filterLayers, layer => {
         ++numCorrectLayers;
-        const section = new BlockSection(
+        BlockSection(
             Sketch,
             layer.container,
             layer.sketchObject.bezierPathWithTransforms(),
@@ -51,6 +53,5 @@ var onGenerate = function (context) {
 
     if (!numCorrectLayers) {
         Messenger.alert(...SELECTION_ERROR);
-        return;
     }
 };

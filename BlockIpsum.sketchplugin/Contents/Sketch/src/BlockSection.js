@@ -1,5 +1,6 @@
 @import 'src/BlockLine.js'
 
+// eslint-disable-next-line no-unused-vars
 const BlockSection = (function () {
     const DEFAULT_BLOCK_HEIGHT = 16;
 
@@ -23,18 +24,19 @@ const BlockSection = (function () {
             : options.blockHeight;
         const midBlockHeight    = options.blockHeight / 2;
         const checkEvery        = options.accuracy || midBlockHeight;
-        options.lineSpacing     = options.lineSpacing 
+        options.lineSpacing     = options.lineSpacing
             || options.blockHeight + midBlockHeight;
 
         const { width, height } = bezierPath.bounds().size;
+        // eslint-disable-next-line prefer-const
         let   { x, y }          = bezierPath.bounds().origin;
 
         // Create group to contain text block shapes
-        let group  = container.newGroup();
-        group.name = 'Text Blocks';
+        const group = container.newGroup();
+        group.name  = 'Text Blocks';
 
-        let x2 = x + width;
-        let y2 = y + height;
+        const x2    = x + width;
+        const y2    = y + height;
 
         let endpoints     = [];    // List of text block boundaries
         let containsPoint = false;

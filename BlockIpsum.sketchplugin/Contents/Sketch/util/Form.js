@@ -1,5 +1,6 @@
 @import 'util/Messenger.js';
 
+// eslint-disable-next-line no-unused-vars
 const Form = (function () {
     /**
      * User input modal form
