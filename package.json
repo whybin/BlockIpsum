@@ -1,0 +1,19 @@
+{
+  "name": "blockipsum",
+  "version": "0.1.0",
+  "description": "Sketch plugin to generate placeholder text block-lines.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docs": "jsdoc --access all -c .jsdoc.json --readme ./README.md ./BlockIpsum.sketchplugin/Contents/Sketch",
+    "lint": "eslint ./BlockIpsum.sketchplugin/Contents ./jsdoc_plugins"
+  },
+  "author": "whybin",
+  "license": "MIT",
+  "private": "true",
+  "devDependencies": {
+    "docdash": "^0.4.0",
+    "eslint": "^4.6.1",
+    "jsdoc": "^3.5.4"
+  }
+}

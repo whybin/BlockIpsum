@@ -1,0 +1,56 @@
+@import 'util/Messenger.js';
+@import 'util/Form.js';
+@import 'src/BlockSection.js';
+
+/**
+ * Handler for generating random-length text blocks
+ * @param context
+ */
+var onGenerate = function (context) {
+    const Sketch          = context.api();
+    Messenger.Sketch      = Sketch;
+
+    const selectedLayers  = Sketch.selectedDocument.selectedLayers;
+    const SELECTION_ERROR = [
+        'No shape layers were selected',
+        'Please select at least one shape layer before proceeding'
+    ];
+    
+    if (!selectedLayers.length) {
+        Messenger.alert(...SELECTION_ERROR);
+        return;
+    }
+
+    let form = new Form({
+            blockHeight: 'Text block height',
+            lineSpacing: 'Line spacing',
+            accuracy:    'Horizontal margin of error'
+        },
+        'Generate Text Blocks',
+        'Please enter numerical values. Blanks will be replaced with default values.'
+    );
+
+    let options = form.display();
+    for (const key in options) {
+        options[key] = parseInt(options[key]);
+    }
+
+    let numCorrectLayers = 0;
+    let filterLayers     = layer => layer.isShape;
+
+    // Only accept Shape layers
+    selectedLayers.iterateWithFilter(filterLayers, layer => {
+        ++numCorrectLayers;
+        const section = new BlockSection(
+            Sketch,
+            layer.container,
+            layer.sketchObject.bezierPathWithTransforms(),
+            options
+        );
+    });
+
+    if (!numCorrectLayers) {
+        Messenger.alert(...SELECTION_ERROR);
+        return;
+    }
+};
