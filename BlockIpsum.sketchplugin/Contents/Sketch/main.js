@@ -23,7 +23,7 @@ var onGenerate = function (context) {    // eslint-disable-line no-unused-vars
 
     /* eslint-disable indent */
     const form = new Form({
-        blockHeight: 'Text block height',
+        fontSize:    'Font size (pt)',
         lineSpacing: 'Line spacing',
         accuracy:    'Horizontal margin of error'
     },

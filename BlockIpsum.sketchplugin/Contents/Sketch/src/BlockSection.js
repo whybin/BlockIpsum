@@ -2,7 +2,7 @@
 
 // eslint-disable-next-line no-unused-vars
 const BlockSection = (function () {
-    const DEFAULT_BLOCK_HEIGHT = 16;
+    const DEFAULT_FONT_SIZE = 16;
 
     /**
      * Handles entire section of text blocks, one per selected layer
@@ -13,20 +13,20 @@ const BlockSection = (function () {
      * @param {NSBezierPath} bezierPath
      * @param {object}       [options]
      *
-     * @param {number}       [options.blockHeight=16]
+     * @param {number}       [options.fontSize=16]
      * @param {number}       [options.accuracy] - Margin of error for horizontal
      * spacing
      * @param {number}       [options.lineSpacing]
      */
     const BlockSection = function (Sketch, container, bezierPath, options = {}) {
         // Configurable spacing properties
-        options.blockHeight     = !options.blockHeight || options.blockHeight < 0
-            ? DEFAULT_BLOCK_HEIGHT
-            : options.blockHeight;
-        const midBlockHeight    = options.blockHeight / 2;
-        const checkEvery        = options.accuracy || midBlockHeight;
-        options.lineSpacing     = options.lineSpacing
-            || options.blockHeight + midBlockHeight;
+        options.fontSize    = !options.fontSize || options.fontSize < 0
+            ? DEFAULT_FONT_SIZE
+            : options.fontSize;
+        const midFontHeight = options.fontSize / 2;
+        const checkEvery    = options.accuracy || midFontHeight;
+        options.lineSpacing = options.lineSpacing
+            || options.fontSize + midFontHeight;
 
         const { width, height } = bezierPath.bounds().size;
         // eslint-disable-next-line prefer-const
@@ -41,7 +41,7 @@ const BlockSection = (function () {
 
         let endpoints     = [];    // List of text block boundaries
         let containsPoint = false;
-        y += midBlockHeight;
+        y += midFontHeight;
 
         while (y <= y2) {
             for (let xTest = x; xTest <= x2; xTest += checkEvery) {
@@ -60,7 +60,7 @@ const BlockSection = (function () {
             }
 
             // Create text block shape
-            BlockLine(Sketch, group, endpoints, y - midBlockHeight, options);
+            BlockLine(Sketch, group, endpoints, y - midFontHeight, options);
 
             y += options.lineSpacing;
             containsPoint = false;
