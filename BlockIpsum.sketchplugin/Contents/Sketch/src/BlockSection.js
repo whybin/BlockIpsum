@@ -27,15 +27,16 @@ const BlockSection = (function () {
             || Config.ratios.lineSpacing * options.fontSize;
 
         const { width, height } = bezierPath.bounds().size;
+
         // eslint-disable-next-line prefer-const
-        let   { x, y }          = bezierPath.bounds().origin;
+        let { x, y } = bezierPath.bounds().origin;
 
         // Create group to contain text block shapes
         const group = container.newGroup();
         group.name  = Config.defaults.groupName;
 
-        const x2    = x + width;
-        const y2    = y + height;
+        const x2 = x + width;
+        const y2 = y + height;
 
         let endpoints     = [];    // List of text block boundaries
         let containsPoint = false;
@@ -45,9 +46,7 @@ const BlockSection = (function () {
             for (let xTest = x; xTest <= x2; xTest += checkEvery) {
                 // Find rough boundaries for text space per horizontal chunk
                 // containsPoint returns integers for boolean values
-                if (
-                    bezierPath.containsPoint({ x: xTest, y: y }) != containsPoint
-                ) {
+                if (bezierPath.containsPoint({ x: xTest, y: y }) != containsPoint) {
                     containsPoint = !containsPoint;
                     endpoints.push(xTest);
                 }
