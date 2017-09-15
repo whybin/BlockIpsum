@@ -25,7 +25,7 @@ var onGenerate = function (context) {    // eslint-disable-line no-unused-vars
     const form = new Form({
         fontSize:    'Font size (pt)',
         lineSpacing: 'Line spacing',
-        precision:   'Horizontal precision (smaller value = greater precision)'
+        precision:   'Horizontal precision (smaller value = greater prec.)'
     },
         'Generate Text Blocks',
         'Please enter numerical values. Blanks will be replaced with default values.'
