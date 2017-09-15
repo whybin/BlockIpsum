@@ -3,6 +3,9 @@ Block Ipsum - a Sketch plugin
 
 Generate skinny rectangles as text placeholders!
 
+![Demo
+gif](https://raw.githubusercontent.com/whybin/files/master/Block-Ipsum-Demo.gif)
+
 Installation
 ------------
 
