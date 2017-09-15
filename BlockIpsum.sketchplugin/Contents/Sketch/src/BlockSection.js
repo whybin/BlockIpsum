@@ -14,7 +14,7 @@ const BlockSection = (function () {
      * @param {object}       [options]
      *
      * @param {number}       [options.fontSize=16]
-     * @param {number}       [options.accuracy] - Margin of error for horizontal
+     * @param {number}       [options.precision] - Margin of error for horizontal
      * spacing
      * @param {number}       [options.lineSpacing]
      */
@@ -24,7 +24,7 @@ const BlockSection = (function () {
             ? DEFAULT_FONT_SIZE
             : options.fontSize;
         const midFontHeight = options.fontSize / 2;
-        const checkEvery    = options.accuracy || midFontHeight;
+        const checkEvery    = options.precision || midFontHeight;
         options.lineSpacing = options.lineSpacing
             || options.fontSize + midFontHeight;
 
