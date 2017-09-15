@@ -1,6 +1,6 @@
 {
   "name": "blockipsum",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Sketch plugin to generate placeholder text block-lines.",
   "main": "main.js",
   "scripts": {
