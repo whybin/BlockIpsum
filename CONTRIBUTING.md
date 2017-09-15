@@ -58,6 +58,8 @@ submitting a pull request, ensure you have done the following:
     $ npm run-script docs
     ```
 
+* Prepare code for linting by installing
+  [eslint-plugin-sketch](https://github.com/whybin/eslint-plugin-sketch)
 * Lint your code with the command:
 
     ```
