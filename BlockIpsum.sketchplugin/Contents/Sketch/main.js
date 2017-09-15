@@ -35,6 +35,9 @@ var onGenerate = function (context) {    // eslint-disable-line no-unused-vars
     const options = form.display();
     for (const key in options) {
         options[key] = parseInt(options[key]);
+        if (options[key] < 0) {
+            options[key] = 0;
+        }
     }
 
     let numCorrectLayers = 0;

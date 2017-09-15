@@ -1,9 +1,8 @@
+@import 'config.js'
 @import 'src/BlockLine.js'
 
 // eslint-disable-next-line no-unused-vars
 const BlockSection = (function () {
-    const DEFAULT_FONT_SIZE = 16;
-
     /**
      * Handles entire section of text blocks, one per selected layer
      * @exports BlockSection
@@ -20,13 +19,12 @@ const BlockSection = (function () {
      */
     const BlockSection = function (Sketch, container, bezierPath, options = {}) {
         // Configurable spacing properties
-        options.fontSize    = !options.fontSize || options.fontSize < 0
-            ? DEFAULT_FONT_SIZE
-            : options.fontSize;
+        options.fontSize    = options.fontSize || Config.defaults.fontSize;
         const midFontHeight = options.fontSize / 2;
-        const checkEvery    = options.precision || midFontHeight;
+        const checkEvery    = options.precision
+            || Config.ratios.precision * options.fontSize;
         options.lineSpacing = options.lineSpacing
-            || options.fontSize + midFontHeight;
+            || Config.ratios.lineSpacing * options.fontSize;
 
         const { width, height } = bezierPath.bounds().size;
         // eslint-disable-next-line prefer-const
@@ -34,7 +32,7 @@ const BlockSection = (function () {
 
         // Create group to contain text block shapes
         const group = container.newGroup();
-        group.name  = 'Text Blocks';
+        group.name  = Config.defaults.groupName;
 
         const x2    = x + width;
         const y2    = y + height;

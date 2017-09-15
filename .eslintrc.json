@@ -6,6 +6,7 @@
     },
     "globals": {
         "COSAlertWindow": true,
+        "Config": true,
         "BlockLine": true,
         "BlockSection": true,
         "Form": true,

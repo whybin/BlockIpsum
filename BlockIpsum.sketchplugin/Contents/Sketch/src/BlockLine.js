@@ -1,3 +1,4 @@
+@import 'config.js'
 @import 'util/Messenger.js';
 
 /**
@@ -17,7 +18,7 @@ const BlockLine = function (Sketch, container, endpoints, y, options) {
         return;
     }
 
-    const capHeight = Math.round(options.fontSize * 3 / 4);
+    const capHeight = Math.round(options.fontSize * Config.ratios.capHeight);
 
     while (endpoints.length) {
         const x = endpoints.shift();
